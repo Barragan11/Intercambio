@@ -1,0 +1,75 @@
+body{
+background: black;
+color:white;
+min-height:100vh;
+}
+
+.navbar{
+background:#e6e5e7cc;
+}
+
+.section{display:none;}
+.active-section{display:block;}
+
+.card-custom{
+background:rgba(245, 245, 245, 0.658);
+color:black;
+border-radius:15px;
+padding:30px;
+box-shadow:0px 8px 25px rgba(0,0,0,0.4);
+}
+
+.list-group-item{
+cursor:grab;
+}
+
+.list-group-item.dragging{
+opacity:0.5;
+}
+
+.result-card{
+background:white;
+color:black;
+border-radius:15px;
+padding:20px;
+transition:0.4s;
+}
+
+.result-card:hover{
+transform:scale(1.05);
+}
+
+.logo-navbar{
+    height:50px;      /* tamaño del logo */
+    width:auto;       /* mantiene proporción */
+    object-fit:contain;
+    border-radius:50%;    /* hace el círculo */
+    border:2px solid white; /* opcional, estilo deportivo */
+}
+
+/* Fondo SOLO para pantalla principal */
+#inicio{
+    background-image: url("/img/estadio.jpeg");
+    background-size: cover;       /* ocupa toda la pantalla */
+    background-position: center;  /* centra la imagen */
+    background-repeat: no-repeat;
+    min-height: 85vh;
+    border-radius: 20px;
+    padding: 80px 20px;
+    position: relative;
+}
+
+/* Oscurecer imagen para que el texto se vea */
+#inicio::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);  /* capa oscura */
+    border-radius: 20px;
+}
+
+#inicio > *{
+    position: relative;
+    z-index: 2;
+}
+

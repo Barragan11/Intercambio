@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JerseySwap Pro</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-dark px-4">
+<a class="navbar-brand d-flex align-items-center" href="#">
+    <img src="img/logo.jpeg" alt="Logo" class="logo-navbar me-2">
+    JerseySwap Pro
+</a>  
+</nav>
+
+<div class="container my-5">
+
+<!-- INICIO -->
+<div id="inicio" class="section active-section text-center">
+    <h1 class="display-4 fw-bold">Intercambio de Jerseys</h1>
+    <p class="lead">Organiza tu intercambio futbolero entre amigos</p>
+    <button class="btn btn-success btn-lg mt-4"
+        onclick="mostrarSeccion('configuracion')">
+        Crear Evento
+    </button>
+</div>
+
+<!-- CONFIGURACIÓN -->
+<div id="configuracion" class="section">
+
+<div class="card-custom">
+
+<h3 class="text-center mb-4">Configurar Evento</h3>
+
+<div class="row g-4">
+
+<div class="col-12 col-md-6">
+<label>Organizador</label>
+<input type="text" id="organizador" class="form-control">
+</div>
+
+<div class="col-12 col-md-6">
+<label>¿El organizador participa?</label>
+<select id="incluido" class="form-select">
+<option value="si">Sí</option>
+<option value="no">No</option>
+</select>
+</div>
+
+<div class="col-12 col-md-6">
+<label>Tipo de Evento</label>
+<select id="tipoEvento" class="form-select" onchange="mostrarPersonalizado()">
+<option value="navidad">Navidad</option>
+<option value="finano">Fin de Año</option>
+<option value="amistoso">Reunión Futbolera</option>
+<option value="personalizado">Mostrar más...</option>
+</select>
+</div>
+
+<div class="col-12 col-md-6 d-none" id="nombreCelebracionDiv">
+<label>Nombre de la Celebración</label>
+<input type="text" id="nombreCelebracion" class="form-control">
+</div>
+
+<div class="col-12 col-md-6">
+<label>Fecha</label>
+<input type="date" id="fecha" class="form-control">
+</div>
+
+<div class="col-12 col-md-6">
+<label>Presupuesto</label>
+<select id="presupuesto" class="form-select" onchange="mostrarOtroMonto()">
+<option value="500">$500</option>
+<option value="1000">$1000</option>
+<option value="1500">$1500</option>
+<option value="2000">$2000</option>
+<option value="otro">Otro monto...</option>
+</select>
+</div>
+
+<div class="col-12 d-none" id="otroMontoDiv">
+<label>Especificar monto</label>
+<input type="number" id="montoPersonalizado" class="form-control">
+</div>
+
+</div>
+
+<hr class="my-4">
+
+<h5>Participantes</h5>
+
+<div class="row">
+<div class="col-12 col-md-8">
+<input type="text" id="participanteInput" class="form-control">
+</div>
+<div class="col-12 col-md-4">
+<button class="btn btn-dark w-100"
+onclick="agregarParticipante()">Agregar</button>
+</div>
+</div>
+
+<p class="mt-3 small">Arrastra para ordenar (Drag & Drop)</p>
+<ul id="listaParticipantes" class="list-group mt-3"></ul>
+
+<hr class="my-4">
+
+<h5>Exclusiones</h5>
+<div id="exclusionesContainer"></div>
+
+<div class="text-center mt-4">
+<button class="btn btn-danger"
+onclick="mostrarSeccion('inicio')">Regresar</button>
+
+<button class="btn btn-success ms-2"
+onclick="guardarEvento()">Guardar Evento</button>
+
+<button class="btn btn-success ms-2"
+onclick="irAlResumen()">Ver Resumen</button>
+
+<button class="btn btn-danger ms-2"onclick="limpiarSistema()">Reiniciar Evento</button>
+
+</div>
+
+</div>
+</div>
+
+<!-- RESUMEN -->
+<div id="resumen" class="section">
+<div class="card-custom">
+
+<h3 class="text-center mb-4">Resumen del Evento</h3>
+
+<div id="datosEvento"></div>
+
+<div class="text-center mt-4">
+<button class="btn btn-secondary"
+onclick="mostrarSeccion('configuracion')">Regresar</button>
+
+<button class="btn btn-danger ms-2"
+onclick="mostrarSeccion('sorteo')">Ir al Sorteo</button>
+</div>
+
+</div>
+</div>
+
+<!-- SORTEO -->
+<div id="sorteo" class="section">
+<div class="card-custom">
+
+<h3 class="text-center mb-4">Sorteo Oficial</h3>
+
+<div class="text-center">
+<button class="btn btn-danger btn-lg"onclick="realizarSorteo()">Realizar Sorteo</button>
+</div>
+
+<div id="resultados" class="row mt-5 g-4"></div>
+
+<div class="text-center mt-4">
+<button class="btn btn-secondary"onclick="mostrarSeccion('resumen')">Regresar</button>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
