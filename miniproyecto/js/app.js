@@ -165,7 +165,6 @@ function toggleExclusion(persona,excluido){
 function guardarEvento(){
 
     const organizador = document.getElementById("organizador").value;
-    const incluido = document.getElementById("incluido").value;
     const tipoEvento = document.getElementById("tipoEvento").value;
     const nombreCelebracion = document.getElementById("nombreCelebracion").value;
     const fecha = document.getElementById("fecha").value;
@@ -182,7 +181,6 @@ function guardarEvento(){
 
     const evento = {
         organizador,
-        incluido,
         tipoEvento,
         nombreCelebracion,
         fecha,
@@ -352,4 +350,5 @@ function limpiarSistema(){
             Swal.fire("Reiniciado","Sistema limpio correctamente","success");
         }
     });
+
 }
